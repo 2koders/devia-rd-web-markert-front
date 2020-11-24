@@ -1,2 +1,2 @@
-# devia-rd-web-markert-front
-Frontend para la el e-commerce de Devia República Dominicana trabajado en Angular con Bootstrap y Bulma
+# Devia República Dominicana Web Market (Front)
+Frontend para el e-commerce de Devia República Dominicana. Angular, Bootstrap y Bulma
