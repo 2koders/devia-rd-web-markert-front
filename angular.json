@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "devia-rd-web-markert-front"
+    }
+  },
+  "defaultProject": "devia-rd-web-markert-front",
+  "cli": {
+    "analytics": "83c77aea-f606-45a1-93e6-19a6571817bb"
+  }
 }
