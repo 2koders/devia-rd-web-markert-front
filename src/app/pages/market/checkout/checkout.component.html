@@ -3,14 +3,17 @@
         <thead>
             <th>Index</th>
             <th>Descripcion</th>
+            <th>Cantidad</th>
         </thead>
         <tbody>
             <tr *ngFor="let product of products">
                 <td>{{product.id}}</td>
                 <td>{{product.description}}</td>
+                <td>{{product.cant}}</td>
             </tr>
         </tbody>
     </table>
     <h2>total: {{totalAmount}}</h2>
-    <h1>hola este es el checkout!</h1>
+
+    <input type="button" value="Pagar ${{totalAmount}}">
 </div>

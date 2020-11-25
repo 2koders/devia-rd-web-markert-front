@@ -22,7 +22,7 @@ export class CheckoutComponent {
         price: 500,
         shopedPrice: 100,
         discount: 0,
-        cant: 1000
+        cant: 100
       },
       {
         id: 2,
@@ -49,7 +49,7 @@ export class CheckoutComponent {
 
   calcAmount(){
     this.products.forEach(product => {
-      this.totalAmount =+ product.cant * (product.price - (product.price * product.discount));
+      this.totalAmount += product.cant * (product.price - (product.price * product.discount));
       console.log(product.id + " - " + product.price + " " + product.discount + " " + "discount: " + (product.price * product.discount) + "subtotal: " + this.totalAmount)
     });
   }
