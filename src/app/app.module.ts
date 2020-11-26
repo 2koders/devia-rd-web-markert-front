@@ -7,6 +7,8 @@ import { HomeComponent } from './pages/landing/home/home.component';
 import { IndexComponent } from './pages/market/index/index.component';
 import { CheckoutComponent } from './pages/market/checkout/checkout.component';
 import { StripeCheckoutComponent } from './components/stripe-checkout/stripe-checkout.component';
+import { ProductDetailsComponent } from './pages/market/product-details/product-details.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { StripeCheckoutComponent } from './components/stripe-checkout/stripe-che
     HomeComponent,
     IndexComponent,
     CheckoutComponent,
-    StripeCheckoutComponent
+    StripeCheckoutComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

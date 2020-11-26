@@ -5,5 +5,7 @@ export interface Products {
     price: number,
     shopedPrice: number
     discount: number,
-    cant: number,
+    quantityStock: number,
+    quantitySold: number,
+    quantityToSold: number,
 }
