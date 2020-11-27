@@ -9,6 +9,7 @@ import { CheckoutComponent } from './pages/market/checkout/checkout.component';
 import { StripeCheckoutComponent } from './components/stripe-checkout/stripe-checkout.component';
 import { ProductDetailsComponent } from './pages/market/product-details/product-details.component';
 import { FormsModule } from '@angular/forms';
+import { OrdersComponent } from './pages/admin/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     IndexComponent,
     CheckoutComponent,
     StripeCheckoutComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

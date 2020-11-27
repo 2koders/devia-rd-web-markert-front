@@ -8,4 +8,5 @@ export interface Products {
     quantityStock: number,
     quantitySold: number,
     quantityToSold: number,
+    subTotal: number,
 }

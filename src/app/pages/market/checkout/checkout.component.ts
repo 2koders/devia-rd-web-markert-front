@@ -19,7 +19,7 @@ export class CheckoutComponent implements OnInit {
     this.totalAmount = 0;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     
   }
 
@@ -28,20 +28,38 @@ export class CheckoutComponent implements OnInit {
   }
 
   calcTotalAmount(){
+    let value = 0;
+
     this.products.forEach(product => {
-      this.totalAmount += product.quantityToSold * (product.price - (product.price * product.discount));
-      //console.log(product.id + " - " + product.price + " " + product.discount + " " + "discount: " + (product.price * product.discount) + "subtotal: " + this.totalAmount)
+      product.subTotal = product.quantityToSold * (product.price - (product.price * product.discount));
+      console.log(product.subTotal);
     });
+
+    this.products.forEach(product => {
+      value += product.subTotal;
+      console.log(this.totalAmount);
+    });
+    
+    this.totalAmount = value;
   }
 
-  restQuantity(prd: Products){
+  updateStockQuantity(prd: Products){
     prd.quantityStock -= prd.quantityToSold;
+    prd.quantitySold += prd.quantityToSold;
+  }
+
+  createNewOrder(){
+    
   }
 
   pay(){
     this.products.forEach(productToPay => {
-      this.restQuantity(productToPay);
+      this.updateStockQuantity(productToPay);
+
+      console.log(productToPay.description + ": " + productToPay.quantityStock + " - " + productToPay.quantitySold);
     });
+
+    this.createNewOrder();
     console.log('Payment Completed!');
   }
 }

@@ -1,7 +1,9 @@
+import { PaymentMethods } from '../dev-interfaces/payment-methods';
 import { Products } from '../dev-interfaces/products';
 
 export class Models {
   products: Products[];
+  paymentMethods: PaymentMethods[];
 
   constructor(){
     this.products = [
@@ -14,7 +16,8 @@ export class Models {
         discount: 0,
         quantityStock: 1000,
         quantitySold: 0,
-        quantityToSold: 0
+        quantityToSold: 0,
+        subTotal: 0,
       },
       {
         id: 2,
@@ -25,7 +28,8 @@ export class Models {
         discount: 0.2,
         quantityStock: 1000,
         quantitySold: 0,
-        quantityToSold: 0
+        quantityToSold: 0,
+        subTotal: 0,
       },
       {
         id: 3,
@@ -36,8 +40,20 @@ export class Models {
         discount: 0.1,
         quantityStock: 20,
         quantitySold: 0,
-        quantityToSold: 0
+        quantityToSold: 0,
+        subTotal: 0,
       },
     ]
+
+    this.paymentMethods = [
+      {
+        id: 1,
+        paymentMethod: 'Tarjeta de Credito/Debito',
+      },
+      {
+        id: 2,
+        paymentMethod: 'PayPal'
+      }
+    ];
   }
 }

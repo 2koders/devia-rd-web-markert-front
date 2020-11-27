@@ -1,25 +1,27 @@
 <div class="container">
     <table>
         <thead>
-            <th style="margin: 0;">Image</th>
-            <th style="margin: 0;">Descripcion</th>
-            <th style="margin: 0;">Cantidad</th>
-            <th style="margin: 0;">Precio Real</th>
-            <th style="margin: 0;">Descuento</th>
-            <th style="margin: 0;">Subtotal</th>
+            <th>Image</th>
+            <th>Descripcion</th>
+            <th>Cantidad</th>
+            <th>Precio Real</th>
+            <th>Descuento</th>
+            <th>Subtotal</th>
         </thead>
         <tbody>
             <tr *ngFor="let product of products">
                 <td><img src="{{product.images}}" alt="" width="50"></td>
                 <td>{{product.description}}</td>
-                <td><input type="number" [(ngModel)]="product.quantityToSold"></td>
+                <td>
+                    <input type="number" [(ngModel)]="product.quantityToSold" (ngModelChange)="calcTotalAmount()" [max]="product.quantityStock" [min]="1">                    
+                </td>
                 <td>${{product.price}}</td>
                 <td>%{{product.discount * 100}}</td>
-                <td>{{product.price - (product.discount * product.price)}}</td>
+                <td>${{product.subTotal}}</td>
             </tr>
         </tbody>
     </table>
-    <h2>total: ${{totalAmount}}</h2>
+    <h2>Total: ${{totalAmount}}</h2>
 
     <input type="button" value="Pagar ${{totalAmount}}" (click)="pay()">
 </div>
