@@ -1,0 +1,10 @@
+<form class="form-signin">
+    <img class="mb-4" src="https://us.123rf.com/450wm/pikepicture/pikepicture1612/pikepicture161200525/68824654-hombre-defecto-marcador-de-posici%C3%B3n-de-avatar-perfil-gris-de-imagen-aislado-en-el-fondo-blanco-para-su-.jpg?ver=6" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" id="inputEmail" name="email" [(ngModel)]="email" class="form-control" placeholder="Email" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" required>
+   
+    <button class="btn btn-lg btn-primary btn-block" (click)="handleLoginClick()" type="button">Sign in</button>
+  </form>

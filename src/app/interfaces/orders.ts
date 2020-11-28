@@ -6,8 +6,7 @@ import { OrderProducts } from './order-products';
 export interface Orders {
     id: number,
     customer: Users,
-    date: Date, 
-    products: OrderProducts[],
+    date: Date,
     totalAmount: number,
     paymentMethod: PaymentMethods,
     orderState: OrdersStates,

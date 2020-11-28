@@ -11,7 +11,7 @@ export class Models {
   products: Products[];
 
   //orders
-  order: Orders[];
+  orders: Orders[];
   readonly orderProducts: OrderProducts[];
   readonly orderState: OrdersStates[];
   readonly paymentMethods: PaymentMethods[];
@@ -21,6 +21,59 @@ export class Models {
   readonly userPermits: UserPermits[];
 
   constructor(){
+    this.userPermits = [
+      {
+        id: 1,
+        userPermits: "Admin"
+      },
+      {
+        id: 2,
+        userPermits: "Client"
+      }
+    ];
+
+    this.users = [
+      {
+        id: 1,
+        isBussines: false,
+        email: "admin@mail.com",
+        password: "ABab123@*",
+        name: "Enmanuel",
+        lastName: "Balcacer",
+        RNCOrIdCard: "40211451154",
+        imgProfile: "https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14046.jpg",
+        totalTimesLogged: 0,
+        isLoged: false,
+        userPermits: this.userPermits.find(a => a.userPermits == "Admin"),
+      },
+      {
+        id: 2,
+        isBussines: false,
+        email: "clientefinal@mail.com",
+        password: "ABab123@*",
+        name: "Juan",
+        lastName: "Perez",
+        RNCOrIdCard: "4020000000",
+        imgProfile: "https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg",
+        totalTimesLogged: 0,
+        isLoged: true,
+        userPermits: this.userPermits.find(a => a.userPermits == "Cliente"),
+      },
+      {
+        id: 3,
+        isBussines: true,
+        email: "empresa@mail.com",
+        password: "ABab123@*",
+        name: "FERRETERIA BOLIVAR C POR A",
+        lastName: "",
+        RNCOrIdCard: "101070803",
+        imgProfile: "",
+        totalTimesLogged: 0,
+        isLoged: false,
+        userPermits: this.userPermits.find(a => a.userPermits == "Cliente"),
+      }
+    ];
+
     this.products = [
       {
         id: 1,
@@ -58,53 +111,7 @@ export class Models {
         quantityToSold: 0,
         subTotal: 0,
       },
-    ];
-
-    this.order = [
-      {
-        id: 1,
-        customer: this.users.find(u => u.id == 2),
-        date: new Date(), 
-        products: [
-          this.orderProducts.find(u => u.idOrder == this.order.find(o => o.id == 1) && u.idProduct == this.products.find(p => p.id == 1)),
-          this.orderProducts.find(u => u.idOrder == this.order.find(o => o.id == 1) && u.idProduct == this.products.find(p => p.id == 2)),
-          this.orderProducts.find(u => u.idOrder == this.order.find(o => o.id == 1) && u.idProduct == this.products.find(p => p.id == 3))
-        ],
-        totalAmount: 0,
-        paymentMethod: this.paymentMethods.find(pm => pm.id == 1),
-        orderState: this.orderState.find(os => os.id == 1),
-      }
-    ];
-
-    this.orderProducts = [
-      {
-        idOrder: this.order.find(o => o.id == 1),
-        idProduct: this.products.find(o => o.id == 1),
-        productDescription: this.products.find(o => o.id == 1).description,
-        productQuantity: 1,
-        productDiscount: this.products.find(o => o.id == 1).discount,
-        productPrice: this.products.find(o => o.id == 1).price,
-        subTotal: 100,
-      },
-      {
-        idOrder: this.order.find(o => o.id == 1),
-        idProduct: this.products.find(o => o.id == 2),
-        productDescription: this.products.find(o => o.id == 2).description,
-        productQuantity: 1,
-        productDiscount: this.products.find(o => o.id == 2).discount,
-        productPrice: this.products.find(o => o.id == 2).price,
-        subTotal: 100,
-      },
-      {
-        idOrder: this.order.find(o => o.id == 1),
-        idProduct: this.products.find(o => o.id == 3),
-        productDescription: this.products.find(o => o.id == 3).description,
-        productQuantity: 1,
-        productDiscount: this.products.find(o => o.id == 3).discount,
-        productPrice: this.products.find(o => o.id == 3).price,
-        subTotal: 100,
-      },
-    ];
+    ];    
 
     this.orderState = [
       {
@@ -136,57 +143,45 @@ export class Models {
       }
     ];
 
-    this.userPermits = [
+    this.orders = [
       {
         id: 1,
-        userPermits: "Admin"
-      },
-      {
-        id: 2,
-        userPermits: "Client"
+        customer: this.users.find(u => u.id == 2),
+        date: new Date(),
+        totalAmount: 0,
+        paymentMethod: this.paymentMethods.find(pm => pm.id == 1),
+        orderState: this.orderState.find(os => os.id == 1),
       }
     ];
 
-    this.users = [
+    this.orderProducts = [
       {
-        id: 1,
-        isBussines: false,
-        email: "admin@mail.com",
-        password: "ABab123@*",
-        name: "Enmanuel",
-        lastName: "Balcacer",
-        RNCOrIdCard: "40211451154",
-        imgProfile: "https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14046.jpg",
-        totalTimesLogged: 0,
-        isLoged: false,
-        userPermits: this.userPermits.find(a => a.id == 1),
+        idOrder: this.orders.find(o => o.id == 1),
+        idProduct: this.products.find(o => o.id == 1),
+        productDescription: this.products.find(o => o.id == 1).description,
+        productQuantity: 1,
+        productDiscount: this.products.find(o => o.id == 1).discount,
+        productPrice: this.products.find(o => o.id == 1).price,
+        subTotal: 100,
       },
       {
-        id: 2,
-        isBussines: false,
-        email: "clientefinal@mail.com",
-        password: "ABab123@*",
-        name: "Juan",
-        lastName: "Perez",
-        RNCOrIdCard: "4020000000",
-        imgProfile: "https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg",
-        totalTimesLogged: 0,
-        isLoged: false,
-        userPermits: this.userPermits.find(a => a.id == 2),
+        idOrder: this.orders.find(o => o.id == 1),
+        idProduct: this.products.find(o => o.id == 2),
+        productDescription: this.products.find(o => o.id == 2).description,
+        productQuantity: 1,
+        productDiscount: this.products.find(o => o.id == 2).discount,
+        productPrice: this.products.find(o => o.id == 2).price,
+        subTotal: 100,
       },
       {
-        id: 3,
-        isBussines: true,
-        email: "empresa@mail.com",
-        password: "ABab123@*",
-        name: "FERRETERIA BOLIVAR C POR A",
-        lastName: "",
-        RNCOrIdCard: "101070803",
-        imgProfile: "",
-        totalTimesLogged: 0,
-        isLoged: false,
-        userPermits: this.userPermits.find(a => a.id == 2),
-      }
+        idOrder: this.orders.find(o => o.id == 1),
+        idProduct: this.products.find(o => o.id == 3),
+        productDescription: this.products.find(o => o.id == 3).description,
+        productQuantity: 1,
+        productDiscount: this.products.find(o => o.id == 3).discount,
+        productPrice: this.products.find(o => o.id == 3).price,
+        subTotal: 100,
+      },
     ];
   }
 }
