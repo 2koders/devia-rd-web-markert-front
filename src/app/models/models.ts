@@ -1,9 +1,24 @@
-import { PaymentMethods } from '../dev-interfaces/payment-methods';
-import { Products } from '../dev-interfaces/products';
+import { OrderProducts } from '../interfaces/order-products';
+import { Orders } from '../interfaces/orders';
+import { OrdersStates } from '../interfaces/orders-states';
+import { PaymentMethods } from '../interfaces/payment-methods';
+import { Products } from '../interfaces/products';
+import { UserPermits } from '../interfaces/user-permits';
+import { Users } from '../interfaces/users';
 
 export class Models {
+  //products
   products: Products[];
-  paymentMethods: PaymentMethods[];
+
+  //orders
+  order: Orders[];
+  readonly orderProducts: OrderProducts[];
+  readonly orderState: OrdersStates[];
+  readonly paymentMethods: PaymentMethods[];
+
+  //users
+  users: Users[];
+  readonly userPermits: UserPermits[];
 
   constructor(){
     this.products = [
@@ -43,7 +58,72 @@ export class Models {
         quantityToSold: 0,
         subTotal: 0,
       },
-    ]
+    ];
+
+    this.order = [
+      {
+        id: 1,
+        customer: this.users.find(u => u.id == 2),
+        date: new Date(), 
+        products: [
+          this.orderProducts.find(u => u.idOrder == this.order.find(o => o.id == 1) && u.idProduct == this.products.find(p => p.id == 1)),
+          this.orderProducts.find(u => u.idOrder == this.order.find(o => o.id == 1) && u.idProduct == this.products.find(p => p.id == 2)),
+          this.orderProducts.find(u => u.idOrder == this.order.find(o => o.id == 1) && u.idProduct == this.products.find(p => p.id == 3))
+        ],
+        totalAmount: 0,
+        paymentMethod: this.paymentMethods.find(pm => pm.id == 1),
+        orderState: this.orderState.find(os => os.id == 1),
+      }
+    ];
+
+    this.orderProducts = [
+      {
+        idOrder: this.order.find(o => o.id == 1),
+        idProduct: this.products.find(o => o.id == 1),
+        productDescription: this.products.find(o => o.id == 1).description,
+        productQuantity: 1,
+        productDiscount: this.products.find(o => o.id == 1).discount,
+        productPrice: this.products.find(o => o.id == 1).price,
+        subTotal: 100,
+      },
+      {
+        idOrder: this.order.find(o => o.id == 1),
+        idProduct: this.products.find(o => o.id == 2),
+        productDescription: this.products.find(o => o.id == 2).description,
+        productQuantity: 1,
+        productDiscount: this.products.find(o => o.id == 2).discount,
+        productPrice: this.products.find(o => o.id == 2).price,
+        subTotal: 100,
+      },
+      {
+        idOrder: this.order.find(o => o.id == 1),
+        idProduct: this.products.find(o => o.id == 3),
+        productDescription: this.products.find(o => o.id == 3).description,
+        productQuantity: 1,
+        productDiscount: this.products.find(o => o.id == 3).discount,
+        productPrice: this.products.find(o => o.id == 3).price,
+        subTotal: 100,
+      },
+    ];
+
+    this.orderState = [
+      {
+        id: 1,
+        state: "Completed",
+      },
+      {
+        id: 2,
+        state: "Canceled",
+      },
+      {
+        id: 3,
+        state: "In process",
+      },
+      {
+        id: 4,
+        state: "Package sent",
+      },
+    ];
 
     this.paymentMethods = [
       {
@@ -53,6 +133,59 @@ export class Models {
       {
         id: 2,
         paymentMethod: 'PayPal'
+      }
+    ];
+
+    this.userPermits = [
+      {
+        id: 1,
+        userPermits: "Admin"
+      },
+      {
+        id: 2,
+        userPermits: "Client"
+      }
+    ];
+
+    this.users = [
+      {
+        id: 1,
+        isBussines: false,
+        email: "admin@mail.com",
+        password: "ABab123@*",
+        name: "Enmanuel",
+        lastName: "Balcacer",
+        RNCOrIdCard: "40211451154",
+        imgProfile: "https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14046.jpg",
+        totalTimesLogged: 0,
+        isLoged: false,
+        userPermits: this.userPermits.find(a => a.id == 1),
+      },
+      {
+        id: 2,
+        isBussines: false,
+        email: "clientefinal@mail.com",
+        password: "ABab123@*",
+        name: "Juan",
+        lastName: "Perez",
+        RNCOrIdCard: "4020000000",
+        imgProfile: "https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg",
+        totalTimesLogged: 0,
+        isLoged: false,
+        userPermits: this.userPermits.find(a => a.id == 2),
+      },
+      {
+        id: 3,
+        isBussines: true,
+        email: "empresa@mail.com",
+        password: "ABab123@*",
+        name: "FERRETERIA BOLIVAR C POR A",
+        lastName: "",
+        RNCOrIdCard: "101070803",
+        imgProfile: "",
+        totalTimesLogged: 0,
+        isLoged: false,
+        userPermits: this.userPermits.find(a => a.id == 2),
       }
     ];
   }

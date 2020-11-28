@@ -10,6 +10,13 @@ import { StripeCheckoutComponent } from './components/stripe-checkout/stripe-che
 import { ProductDetailsComponent } from './pages/market/product-details/product-details.component';
 import { FormsModule } from '@angular/forms';
 import { OrdersComponent } from './pages/admin/orders/orders.component';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { ContactsComponent } from './pages/landing/contacts/contacts.component';
+import { MainMarketComponent } from './pages/market/main-market/main-market.component';
+import { MainAdminComponent } from './pages/admin/main-admin/main-admin.component';
+
+//Services
+import { UsersService } from './services/users.service';
 
 @NgModule({
   declarations: [
@@ -19,14 +26,22 @@ import { OrdersComponent } from './pages/admin/orders/orders.component';
     CheckoutComponent,
     StripeCheckoutComponent,
     ProductDetailsComponent,
-    OrdersComponent
+    OrdersComponent,
+    DashboardComponent,
+    ContactsComponent,
+    MainMarketComponent,
+    MainAdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    UsersService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

@@ -1,3 +1,5 @@
+import { UserPermits } from './user-permits';
+
 export interface Users {
     id: number,
     isBussines: boolean,
@@ -9,4 +11,5 @@ export interface Users {
     imgProfile?: string,
     totalTimesLogged: number,
     isLoged: boolean,
+    userPermits: UserPermits,
 }
