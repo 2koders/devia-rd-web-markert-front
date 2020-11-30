@@ -14,8 +14,10 @@ export class MainAdminComponent implements OnInit {
 
   constructor() {
     this.model = new Models();
-    this.user = this.model.users.find(u => u.isLoged);
+    this.user = this.model.users.find(u => u.id.toString() == localStorage.getItem("user"));
+
     this.isAnUserLogged = this.user != null || this.user != undefined ? true : false;
+    
     console.log("Is an User Logged?: " + this.isAnUserLogged);
 
     if (this.isAnUserLogged) {

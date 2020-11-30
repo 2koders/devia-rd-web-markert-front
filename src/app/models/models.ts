@@ -12,7 +12,7 @@ export class Models {
 
   //orders
   orders: Orders[];
-  readonly orderProducts: OrderProducts[];
+  orderProducts: OrderProducts[];
   readonly orderState: OrdersStates[];
   readonly paymentMethods: PaymentMethods[];
 
@@ -44,7 +44,7 @@ export class Models {
         imgProfile: "https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14046.jpg",
         totalTimesLogged: 0,
         isLoged: false,
-        userPermits: this.userPermits.find(a => a.userPermits == "Admin"),
+        userPermits: this.userPermits.find(a => a.id == 1),
       },
       {
         id: 2,
@@ -56,8 +56,8 @@ export class Models {
         RNCOrIdCard: "4020000000",
         imgProfile: "https://image.freepik.com/vector-gratis/perfil-avatar-hombre-icono-redondo_24640-14044.jpg",
         totalTimesLogged: 0,
-        isLoged: true,
-        userPermits: this.userPermits.find(a => a.userPermits == "Cliente"),
+        isLoged: false,
+        userPermits: this.userPermits.find(a => a.id == 2),
       },
       {
         id: 3,
@@ -70,7 +70,7 @@ export class Models {
         imgProfile: "",
         totalTimesLogged: 0,
         isLoged: false,
-        userPermits: this.userPermits.find(a => a.userPermits == "Cliente"),
+        userPermits: this.userPermits.find(a => a.id == 2),
       }
     ];
 

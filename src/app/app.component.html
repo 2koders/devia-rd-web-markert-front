@@ -7,6 +7,10 @@
     <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
     <li><a routerLink="/auth" routerLinkActive="active">Auth</a></li>
   </ul>
+  <ul *ngIf="isAnUserLogged">
+    <h1>Hola {{user.name}}!</h1>
+    <img src="{{user.imgProfile}}" alt="" width="45">
+  </ul>
 </nav>
 <!-- The routed views render in the <router-outlet>-->
 <router-outlet></router-outlet>

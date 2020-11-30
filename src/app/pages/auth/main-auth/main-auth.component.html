@@ -3,8 +3,15 @@
 <nav>
   <ul>
     <li><a routerLink="/auth" routerLinkActive="active">Home</a></li>
+  </ul>
+  <ul *ngIf="!isAnUserLogged">
     <li><a routerLink="singin" routerLinkActive="active">SingIn</a></li>
     <li><a routerLink="singup" routerLinkActive="active">SingUp</a></li>
+  </ul>
+  <ul *ngIf="isAnUserLogged">
+    <li><button (click)="authLogOut()">LogOut</button></li>
+    <h1>Hola {{user.name}}!</h1>
+    <img src="{{user.imgProfile}}" alt="" width="45">
   </ul>
 </nav>
 

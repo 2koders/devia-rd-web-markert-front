@@ -4,7 +4,7 @@ import { Models } from 'src/app/models/models';
 
 @Component({
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss']
+  styleUrls: ['./checkout.component.scss'],
 })
 
 export class CheckoutComponent implements OnInit {

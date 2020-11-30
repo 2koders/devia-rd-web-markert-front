@@ -34,18 +34,22 @@ export class SingInComponent implements OnInit {
       this.user = this.model.users.find(a => a.email == this.email && a.password == this.password);
 
       //We mark it as logged in to know that you are logged in.
-      this.user.isLoged = true;
+      this.user.isLoged = true;      
+      this.model.users.find(u => u.id == this.user.id).isLoged = this.user.isLoged;
+
+      //Here saving our user in localStorage to use leter
+      localStorage.setItem("user",this.user.id.toString());
 
       this.authenticateUser(this.user);
     }
     
-    console.log("Login: " + this.userFound);
+    console.log("Login: " + this.userFound + ", " + this.model.users.find(u => u.id.toString() == localStorage.getItem("user")).name + " is SingIn."); 
   }
 
   authenticateUser(u: Users){
     if(u.userPermits.userPermits == "Admin"){
       this.router.navigate(['/admin']);
-    } else if(u.userPermits.userPermits == "Client"){ 
+    } else { 
       this.router.navigate(['/']);
     }
   }

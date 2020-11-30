@@ -13,17 +13,20 @@ export class RouteGuardService implements CanActivate{
   user: Users;
 
   constructor() {
-  
+    this.model = new Models();
+    this.user = this.model.users.find(u => u.id.toString() == localStorage.getItem("user"));
+
+    if (this.user != null || this.user != undefined) {
+      this.user.isLoged = true;
+    }    
   }
 
-  canActivate(route: ActivatedRouteSnapshot): boolean {
-
-    this.user = this.model.users.find(u => u.isLoged);
-    
+  canActivate(route: ActivatedRouteSnapshot): boolean {    
     let user = this.user;
-
-    if(user.userPermits.userPermits == 'Admin'){
-      return true;
+    if (user != null || user != undefined) {
+      if(user.userPermits.userPermits == "Admin"){
+        return true;
+      }
     }
     return false;
   }
