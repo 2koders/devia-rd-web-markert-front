@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Users } from 'src/app/interfaces/users';
-import { Models } from 'src/app/models/models';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   templateUrl: './sing-in.component.html',
@@ -9,44 +9,43 @@ import { Models } from 'src/app/models/models';
 })
 
 export class SingInComponent implements OnInit {
-    
-  model: Models;
   user: Users;
+  users: Users[];
   password: string;
   email: string;
   userFound: boolean;
 
-  constructor(private router : Router) {
-    this.model = new Models();
+  constructor(private router : Router, public userSv : UsersService) {
     this.password = "";
     this.email = "";
   }
 
   ngOnInit(): void {
+    this.userSv.getAllUsers().subscribe(data => {
+      this.users = data;
+      console.log(this.users);
+    });      
   }
 
   handleLoginClick(){
-    //This variable tells me if a user has these credentials. Returns true or false.
-    this.userFound = this.model.users.includes(this.model.users.find(u => u.password == this.password && u.email == this.email));
+    //This variable tells me if an user has these credentials. Returns true or false.
+    this.userFound = this.users.includes(this.users.find(u => u.password == this.password && u.email == this.email));
     
     if (this.userFound) {
       //Now we have our user!
-      this.user = this.model.users.find(a => a.email == this.email && a.password == this.password);
+      this.user = this.users.find(a => a.email == this.email && a.password == this.password);
 
       //We mark it as logged in to know that you are logged in.
-      this.user.isLoged = true;      
-      this.model.users.find(u => u.id == this.user.id).isLoged = this.user.isLoged;
+      this.user.isLoged = true;
 
-      //Here saving our user in localStorage to use leter
-      localStorage.setItem("user",this.user.id.toString());
+      console.log(this.user);      
 
       this.authenticateUser(this.user);
     }
-    
-    console.log("Login: " + this.userFound + ", " + this.model.users.find(u => u.id.toString() == localStorage.getItem("user")).name + " is SingIn."); 
   }
 
   authenticateUser(u: Users){
+    this.userSv.updateThisUser(u);
     if(u.userPermits.userPermits == "Admin"){
       this.router.navigate(['/admin']);
     } else { 

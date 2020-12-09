@@ -1,16 +1,11 @@
-<h1>Angular Router App</h1>
-<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
-<nav>
-  <ul>
-    <li><a routerLink="/" routerLinkActive="active">Home</a></li>
-    <li><a routerLink="/market" routerLinkActive="active">Market</a></li>
-    <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
-    <li><a routerLink="/auth" routerLinkActive="active">Auth</a></li>
-  </ul>
-  <ul *ngIf="isAnUserLogged">
-    <h1>Hola {{user.name}}!</h1>
-    <img src="{{user.imgProfile}}" alt="" width="45">
-  </ul>
-</nav>
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+<app-navbar [user]="user" [isAnUserLogged]="isAnUserLogged"></app-navbar>
+
+<div class="container">
+  <h1>Angular Router App</h1>
+
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem velit nesciunt, eius ratione magni vitae suscipit. Nobis eaque ipsum est voluptates numquam facere optio quibusdam libero distinctio consectetur iste perferendis corporis culpa, dolore ratione illo, repellendus vitae molestias. Deleniti incidunt provident sit aut possimus, ipsa iusto alias quaerat, velit dicta nesciunt id ducimus. Itaque, tempora libero sint voluptas laudantium ullam? Nobis in eos sunt aliquam eum delectus accusantium ab quod id. Minima natus soluta enim eveniet tenetur fugiat nostrum optio. Voluptatem dolor, aut iusto repellendus velit repudiandae unde voluptas facilis omnis amet sint perspiciatis corporis soluta. Cum impedit ut magnam.</p>
+
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>

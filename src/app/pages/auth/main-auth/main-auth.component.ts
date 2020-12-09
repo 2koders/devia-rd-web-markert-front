@@ -1,38 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/interfaces/users';
-import { Models } from 'src/app/models/models';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   templateUrl: './main-auth.component.html',
   styleUrls: ['./main-auth.component.scss']
 })
 export class MainAuthComponent implements OnInit {
-
-  model: Models;
+  users: Users[];
   user: Users;
   isAnUserLogged: boolean;
 
-  constructor() { 
-    this.model = new Models();
-    this.user = this.model.users.find(u => u.id.toString() == localStorage.getItem("user"));
-    this.isAnUserLogged = this.model.users.includes(this.model.users.find(u => u.id.toString() == localStorage.getItem("user")));
+  constructor(public userSv: UsersService) { 
+    
   }
 
   ngOnInit(): void {
+    this.userSv.getAllUsers().subscribe(data => {
+      this.users = data;
+
+      this.user = this.users.find(u => u.isLoged == true);
+
+      this.isAnUserLogged = this.users.includes(this.users.find(u => u.isLoged == true));
+    })
   }
 
   authLogOut(){
     if (this.isAnUserLogged) {
       //Our user getout :'( 
-      this.model.users.find(u => u.id.toString() == localStorage.getItem("user")).isLoged = false;
+      this.user.isLoged = false;
 
       //Cleaning our variable "user" in the localStorage.
-      localStorage.removeItem("user");
+      this.userSv.updateThisUser(this.user)
       
       //Reset our "isAnUserLogged" variable.
       this.isAnUserLogged = false;
 
       console.log("Logout completed!");
+      console.log(this.user)
     } else {
       console.log("Anyone is logged");
     }

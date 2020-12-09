@@ -1,7 +1,8 @@
 //Others
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 //Components
@@ -26,6 +27,8 @@ import { SingInComponent } from './pages/auth/sing-in/sing-in.component';
 
 //Services
 import { UsersService } from './services/users.service';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -42,12 +45,16 @@ import { UsersService } from './services/users.service';
     MainAdminComponent,
     SingUpComponent,
     MainAuthComponent,
-    SingInComponent
+    SingInComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     UsersService
