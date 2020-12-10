@@ -12,7 +12,8 @@ export class NavbarComponent implements OnInit {
   @Input() user: Users;
   @Input() isAnUserLogged: boolean;
 
-  constructor(public userSv: UsersService) { }
+  constructor(public userSv: UsersService) {
+  }
 
   ngOnInit(): void {
   }

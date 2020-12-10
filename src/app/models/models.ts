@@ -34,7 +34,7 @@ export class Models {
 
     this.users = [
       {
-        id: 1,
+        id: "1",
         isBussines: false,
         email: "admin@mail.com",
         password: "ABab123@*",
@@ -47,7 +47,7 @@ export class Models {
         userPermits: this.userPermits.find(a => a.id == 1),
       },
       {
-        id: 2,
+        id: "2",
         isBussines: false,
         email: "clientefinal@mail.com",
         password: "ABab123@*",
@@ -60,7 +60,7 @@ export class Models {
         userPermits: this.userPermits.find(a => a.id == 2),
       },
       {
-        id: 3,
+        id: "3",
         isBussines: true,
         email: "empresa@mail.com",
         password: "ABab123@*",
@@ -146,7 +146,7 @@ export class Models {
     this.orders = [
       {
         id: 1,
-        customer: this.users.find(u => u.id == 2),
+        customer: this.users.find(u => u.id == "2"),
         date: new Date(),
         totalAmount: 0,
         paymentMethod: this.paymentMethods.find(pm => pm.id == 1),

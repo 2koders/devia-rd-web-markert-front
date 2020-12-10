@@ -3,31 +3,25 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } fro
 import { Observable } from 'rxjs';
 import { Users } from 'src/app/interfaces/users';
 import { Models } from 'src/app/models/models';
+import { UsersService } from '../users.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RouteGuardService implements CanActivate{
-
-  model: Models;
   user: Users;
 
-  constructor() {
-    this.model = new Models();
-    this.user = this.model.users.find(u => u.id.toString() == localStorage.getItem("user"));
+  constructor(public userSv : UsersService) {}
 
-    if (this.user != null || this.user != undefined) {
-      this.user.isLoged = true;
-    }    
-  }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    this.userSv.getAllUsers().subscribe(users => {
+      this.user = users.find(u => u.isLoged == true);
+    });
 
-  canActivate(route: ActivatedRouteSnapshot): boolean {    
-    let user = this.user;
-    if (user != null || user != undefined) {
-      if(user.userPermits.userPermits == "Admin"){
-        return true;
-      }
+    if (this.user.isLoged){
+      return true;
     }
+
     return false;
   }
 }

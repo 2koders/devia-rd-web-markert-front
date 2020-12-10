@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 export class UsersService {
   constructor(private httpClient: HttpClient) { }
 
-  getAllUsers(): Observable<any>{
-    return this.httpClient.get(`${environment.apiUrl}/users/`);
+  getAllUsers(): Observable<Users[]>{
+    return this.httpClient.get<Users[]>(`${environment.apiUrl}/users/`);
   }
 
   getThisUser(user: Users){
@@ -23,11 +23,11 @@ export class UsersService {
     return this.httpClient.post<Users>(`${environment.apiUrl}/users/`, user);
   }
 
-  updateThisUser(user: Users){
-    this.httpClient.put(`${environment.apiUrl}/users/${user.id}`, user);
+  updateThisUser(user: Users): Observable<Users>{
+    return this.httpClient.put<Users>(`${environment.apiUrl}/users/${user.id}`, user);
   }
 
-  deleteThisUser(user: Users){
-    this.httpClient.delete(`${environment.apiUrl}/users/${user.id}`);
+  deleteThisUser(user: Users): Observable<Users>{
+    return this.httpClient.delete<Users>(`${environment.apiUrl}/users/${user.id}`);
   }
 }

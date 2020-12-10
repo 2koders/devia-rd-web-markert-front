@@ -11,12 +11,12 @@
   <ul *ngIf="isAnUserLogged">
     <li><button (click)="authLogOut()">LogOut</button></li>
     <h1>{{user.name}} {{user.lastName}}</h1>
-    <div *ngIf='user.imageProfile != ""; else imageProfileTempale'>
+    <div *ngIf='user.imageProfile != ""'>
       <img src="{{user.imgProfile}}" alt="" width="45">
     </div>
-    <div #imageProfileTempale>
+    <div *ngIf='user.imageProfile == ""'>
       <img src="https://us.123rf.com/450wm/pikepicture/pikepicture1612/pikepicture161200525/68824654-hombre-defecto-marcador-de-posici%C3%B3n-de-avatar-perfil-gris-de-imagen-aislado-en-el-fondo-blanco-para-su-.jpg?ver=6" alt="" width="45">
-    </div>
+    </div> 
   </ul>
 </nav>
 

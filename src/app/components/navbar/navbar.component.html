@@ -27,7 +27,7 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form> -->
-        <ul *ngIf="isAnUserLogged" class="navbar-nav me-auto mb-2 mb-lg-0 float-right justify-content-center p-0">
+        <ul *ngIf="isAnUserLogged" class="navbar-nav me-auto mb-2 mb-lg-0 d-flex ">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{user.name}} {{user.lastName}}
@@ -39,7 +39,13 @@
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
             </li>
-            <img class="rounded-circle m-0" src="{{user.imgProfile}}" alt="" width="45" height="auto">       
+            <div *ngIf='user.imageProfile != ""'>
+              <img class="rounded-circle m-0" src="{{user.imgProfile}}" alt="" width="45" height="auto">
+            </div>  
+            
+            <div *ngIf='user.imageProfile == ""'>
+              <img src="https://us.123rf.com/450wm/pikepicture/pikepicture1612/pikepicture161200525/68824654-hombre-defecto-marcador-de-posici%C3%B3n-de-avatar-perfil-gris-de-imagen-aislado-en-el-fondo-blanco-para-su-.jpg?ver=6" alt="" width="45">
+            </div>     
         </ul>
       </div>
     </div>

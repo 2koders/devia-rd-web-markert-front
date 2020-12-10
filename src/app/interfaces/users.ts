@@ -1,7 +1,7 @@
 import { UserPermits } from './user-permits';
 
 export interface Users {
-    id: number,
+    id: string,
     isBussines: boolean,
     email: string,
     password: string,

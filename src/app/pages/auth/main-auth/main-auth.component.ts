@@ -31,7 +31,9 @@ export class MainAuthComponent implements OnInit {
       this.user.isLoged = false;
 
       //Cleaning our variable "user" in the localStorage.
-      this.userSv.updateThisUser(this.user)
+      this.userSv.updateThisUser(this.user).subscribe(data => {
+        console.log(data);
+      });
       
       //Reset our "isAnUserLogged" variable.
       this.isAnUserLogged = false;

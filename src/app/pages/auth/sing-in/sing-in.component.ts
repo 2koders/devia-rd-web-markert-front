@@ -37,15 +37,15 @@ export class SingInComponent implements OnInit {
 
       //We mark it as logged in to know that you are logged in.
       this.user.isLoged = true;
-
-      console.log(this.user);      
-
+      this.userSv.updateThisUser(this.user).subscribe(data => {
+        console.log(data);
+      });
       this.authenticateUser(this.user);
     }
   }
 
   authenticateUser(u: Users){
-    this.userSv.updateThisUser(u);
+    
     if(u.userPermits.userPermits == "Admin"){
       this.router.navigate(['/admin']);
     } else { 

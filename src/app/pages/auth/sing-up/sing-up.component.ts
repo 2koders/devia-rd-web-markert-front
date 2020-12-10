@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/interfaces/users';
 import { UsersService } from 'src/app/services/users.service';
-import { UserPermits } from "src/app/interfaces/user-permits";
 import { Models } from 'src/app/models/models';
 
 @Component({
@@ -16,7 +15,7 @@ export class SingUpComponent implements OnInit {
 
   constructor(public userSv: UsersService) {
     this.user = {
-      id: 0,
+      id: "0",
       name: "",
       lastName: "",
       isBussines: false,
@@ -38,7 +37,7 @@ export class SingUpComponent implements OnInit {
 
   singUp(){
     let user: Users = {
-      id : Number(this.users.length + 1),
+      id : `${this.users.length + 1}`,
       name: this.user.name,
       lastName: this.user.lastName,
       isBussines: this.user.isBussines,
