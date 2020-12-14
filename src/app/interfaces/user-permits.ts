@@ -1,4 +1,4 @@
 export interface UserPermits {
-    id: number;
+    id: string;
     userPermits: string;
 }

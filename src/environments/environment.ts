@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://5fcff5b91f23740016631012.mockapi.io/api/v1/',
+  apiUrl: 'http://localhost:3000',
   stripeKey: 'pk_test_51HrCWKJ241YA5d2XszFYrl9w1waIkI6fEgLFPkkUipHSTYJ95C1cVM2HYhD1R44WWSP915yz8tH8LNiHN8NaMajq00XrwCGp2u'
 };
 

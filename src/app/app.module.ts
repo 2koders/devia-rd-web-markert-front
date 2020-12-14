@@ -29,6 +29,7 @@ import { SingInComponent } from './pages/auth/sing-in/sing-in.component';
 import { UsersService } from './services/users.service';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProfileComponent } from './pages/auth/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MainAuthComponent,
     SingInComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

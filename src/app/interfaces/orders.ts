@@ -1,10 +1,9 @@
 import { OrdersStates } from './orders-states';
 import { PaymentMethods } from './payment-methods';
 import { Users } from './users';
-import { OrderProducts } from './order-products';
 
 export interface Orders {
-    id: number,
+    id: string,
     customer: Users,
     date: Date,
     totalAmount: number,

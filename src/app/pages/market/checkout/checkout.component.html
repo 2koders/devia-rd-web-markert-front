@@ -17,8 +17,8 @@
                     <input type="number" [(ngModel)]="product.quantityToSold" (ngModelChange)="calcTotalAmount()" [max]="product.quantityStock" [min]="1">                    
                 </td>
                 <td>${{product.price}}</td>
-                <td>%{{product.discount * 100}}</td>
-                <td>${{product.subTotal}}</td>
+                <td>%{{product.price}}</td>
+                <td>${{product.price}}</td>
             </tr>
         </tbody>
     </table>

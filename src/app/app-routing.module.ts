@@ -4,6 +4,7 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { MainAdminComponent } from './pages/admin/main-admin/main-admin.component';
 import { OrdersComponent } from './pages/admin/orders/orders.component';
 import { MainAuthComponent } from './pages/auth/main-auth/main-auth.component';
+import { ProfileComponent } from './pages/auth/profile/profile.component';
 import { SingInComponent } from './pages/auth/sing-in/sing-in.component';
 import { SingUpComponent } from './pages/auth/sing-up/sing-up.component';
 import { ContactsComponent } from './pages/landing/contacts/contacts.component';
@@ -69,13 +70,12 @@ const routes: Routes = [
       {
         path: 'singup', 
         component: SingUpComponent,
-      },
-      // {
-      //   path: '', 
-      //   redirectTo: '/singin',
-      //   pathMatch: 'full'
-      // }
+      }
     ]
+  },
+  {
+    path: 'user/:userId',    
+    component: ProfileComponent
   }
 ];
 
@@ -83,4 +83,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

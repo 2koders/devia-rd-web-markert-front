@@ -15,8 +15,8 @@ export class UsersService {
     return this.httpClient.get<Users[]>(`${environment.apiUrl}/users/`);
   }
 
-  getThisUser(user: Users){
-    return this.httpClient.get(`${environment.apiUrl}/users/${user.id}`);
+  getThisUser(id: string): Observable<Users>{
+    return this.httpClient.get<Users>(`${environment.apiUrl}/users/${id}`);
   }
 
   createNewUser(user: Users): Observable<Users>{

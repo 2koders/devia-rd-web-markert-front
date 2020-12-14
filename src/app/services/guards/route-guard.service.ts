@@ -18,10 +18,12 @@ export class RouteGuardService implements CanActivate{
       this.user = users.find(u => u.isLoged == true);
     });
 
-    if (this.user.isLoged){
-      return true;
+    if (this.user != undefined) {
+      if (this.user.isLoged){
+        return true;
+      }  
     }
-
+    
     return false;
   }
 }

@@ -1,4 +1,4 @@
 export interface OrdersStates {
-    id: number,
+    id: string,
     state: string,
 }

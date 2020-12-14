@@ -10,7 +10,6 @@ import { UsersService } from 'src/app/services/users.service';
 export class NavbarComponent implements OnInit {
 
   @Input() user: Users;
-  @Input() isAnUserLogged: boolean;
 
   constructor(public userSv: UsersService) {
   }
@@ -19,14 +18,11 @@ export class NavbarComponent implements OnInit {
   }
 
   authLogOut(){
-    if (this.isAnUserLogged) {
+    if (this.user) {
       //Our user getout :'( 
       this.user.isLoged = false;
 
-      this.userSv.updateThisUser(this.user)
-      
-      //Reset our "isAnUserLogged" variable.
-      this.isAnUserLogged = false;
+      this.userSv.updateThisUser(this.user);
 
       console.log("Logout completed!");
     } 

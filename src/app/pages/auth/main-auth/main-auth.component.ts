@@ -9,24 +9,19 @@ import { UsersService } from 'src/app/services/users.service';
 export class MainAuthComponent implements OnInit {
   users: Users[];
   user: Users;
-  isAnUserLogged: boolean;
 
-  constructor(public userSv: UsersService) { 
-    
-  }
+  constructor(public userSv: UsersService) {  }
 
   ngOnInit(): void {
     this.userSv.getAllUsers().subscribe(data => {
       this.users = data;
 
       this.user = this.users.find(u => u.isLoged == true);
-
-      this.isAnUserLogged = this.users.includes(this.users.find(u => u.isLoged == true));
     })
   }
 
   authLogOut(){
-    if (this.isAnUserLogged) {
+    if (this.user) {
       //Our user getout :'( 
       this.user.isLoged = false;
 
@@ -34,12 +29,8 @@ export class MainAuthComponent implements OnInit {
       this.userSv.updateThisUser(this.user).subscribe(data => {
         console.log(data);
       });
-      
-      //Reset our "isAnUserLogged" variable.
-      this.isAnUserLogged = false;
 
       console.log("Logout completed!");
-      console.log(this.user)
     } else {
       console.log("Anyone is logged");
     }

@@ -30,33 +30,32 @@ export class CheckoutComponent implements OnInit {
   calcTotalAmount(){
     let value = 0;
 
-    this.products.forEach(product => {
-      product.subTotal = product.quantityToSold * (product.price - (product.price * product.discount));
-      console.log(product.subTotal);
-    });
+    // this.products.forEach(product => {
+    //   product.subTotal = product.quantityToSold * (product.price - (product.price * product.discount));
+    //   console.log(product.subTotal);
+    // });
 
-    this.products.forEach(product => {
-      value += product.subTotal;
-      console.log(this.totalAmount);
-    });
+    // this.products.forEach(product => {
+    //   value += product.subTotal;
+    //   console.log(this.totalAmount);
+    // });
     
     this.totalAmount = value;
   }
 
   updateStockQuantity(prd: Products){
-    prd.quantityStock -= prd.quantityToSold;
-    prd.quantitySold += prd.quantityToSold;
+    // prd.quantityStock -= prd.quantityToSold;
+    // prd.quantitySold += prd.quantityToSold;
   }
 
   createNewOrder(){
-    
+    console.log('Order Completed!');
   }
 
   pay(){
     this.products.forEach(productToPay => {
       this.updateStockQuantity(productToPay);
-
-      console.log(productToPay.description + ": " + productToPay.quantityStock + " - " + productToPay.quantitySold);
+      // console.log(productToPay.description + ": " + productToPay.quantityStock + " - " + productToPay.quantitySold);
     });
 
     this.createNewOrder();

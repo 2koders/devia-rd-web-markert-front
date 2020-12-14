@@ -4,11 +4,12 @@
   <ul>
     <li><a routerLink="/auth" routerLinkActive="active">Home</a></li>
   </ul>
-  <ul *ngIf="!isAnUserLogged">
+  <ul *ngIf="!user">
     <li><a routerLink="singin" routerLinkActive="active">SingIn</a></li>
     <li><a routerLink="singup" routerLinkActive="active">SingUp</a></li>
   </ul>
-  <ul *ngIf="isAnUserLogged">
+  <ul *ngIf="user">
+    <li><a [routerLink]="['/user',user.id]">Profile</a></li>
     <li><button (click)="authLogOut()">LogOut</button></li>
     <h1>{{user.name}} {{user.lastName}}</h1>
     <div *ngIf='user.imageProfile != ""'>
